@@ -1,4 +1,4 @@
-# item-cache-service-java - open source (open-source license information to be added)
+# item-cache-service-java - Guava vs ConcurrentHashMap comparison
 This implementation uses ConcurrentHashMap with additional callable task to clear cache entries which doesn't satisfy the criteria
 
 Develop a RESTful web service that implement the following 2 APIs in Kotlin, Java or Clojure
