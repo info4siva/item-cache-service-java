@@ -28,4 +28,8 @@ public interface ItemCache {
      * @return Map<String, ItemInfo>
      */
     List<Map<String, ItemInfo>> fetchItems();
+        /**
+     * This method clears the cache and shutdown executor. It is mainly used in repeated test cases execution
+     **/
+    boolean clearCacheAndShutdownMaintenanceExecutor ();
 }
