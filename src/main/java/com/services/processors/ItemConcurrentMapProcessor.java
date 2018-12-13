@@ -25,6 +25,7 @@ public class ItemConcurrentMapProcessor implements ItemCache {
 
     private static ConcurrentHashMap<Integer, ItemInfo> itemCache = null;
     private static CacheMaintenanceService maintenanceTask = null;
+    private static ScheduledExecutorService scheduledExecutorService = null;
     /**
      * This static method initializes the cache
      **/
@@ -37,7 +38,8 @@ public class ItemConcurrentMapProcessor implements ItemCache {
             itemCache = new ConcurrentHashMap(initialCapacity);
             maintenanceTask = new CacheMaintenanceService();
             //2. scheduled-executor to invalidate cache entries based upon business logic
-            Executors.newSingleThreadScheduledExecutor().schedule(maintenanceTask, 1, TimeUnit.SECONDS);
+            scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+            scheduledExecutorService.schedule(maintenanceTask, 1, TimeUnit.SECONDS);
             return Boolean.TRUE;
         }
         return Boolean.FALSE;
@@ -140,5 +142,20 @@ public class ItemConcurrentMapProcessor implements ItemCache {
             }
         }
         return output;
+    }
+    /**
+     * This method clears the cache and shutdown executor. It is mainly used in repeated test cases execution
+     **/
+    public boolean clearCacheAndShutdownMaintenanceExecutor () {
+        //shutdown the thread
+        if(null != scheduledExecutorService) {
+            scheduledExecutorService.shutdown();
+            maintenanceTask = null;
+        }
+        if(null != itemCache) {
+            itemCache = null;
+            return Boolean.TRUE;
+        }
+        return Boolean.FALSE;
     }
 }
