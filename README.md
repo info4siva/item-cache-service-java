@@ -1,5 +1,9 @@
 # item-cache-service-java - Guava vs ConcurrentHashMap comparison
-This implementation uses ConcurrentHashMap with additional callable task to clear cache entries which doesn't satisfy the criteria
+My main implementation uses ConcurrentHashMap with additional callable task to clear cache entries which doesn't satisfy the criteria provided in the problem-statement. Intially i have thought about implementing solution using 4 different data structures (Guava Cache, ConcurrentHashMap, LinkedBlockingQueue, DelayeQue) and comparing the performance between each of them. However i have elimated Q approach to pickup latest from Cache.
+
+Guava Cache doesn't maintain insertion order and only average performance compared to ConcurrentHashMap solution for add and fetch operations. Hence i preferred ConcurrentHashMap over other Collection framework.
+
+Please do feel free to drop your feedback to info4siva@gmail.com in case there are any discrepancies or issues !
 
 ## Problem Statement
 Develop a RESTful web service that implement the following 2 APIs in Kotlin, Java or Clojure
