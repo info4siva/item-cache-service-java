@@ -18,10 +18,17 @@ Notes:
 
 ## Solution - JAVA Frameworks / Tools used for Caching Implementation
 Gradle
+
 Jersey Container
+
 Jetty Web Server
+
 Jackson for parsing JSON
+
 Experiment caching with Google Guava Cache libraries
+
 Actual Implementation using ConcurrentHashMap
+
 JUNIT4 (JUNIT5 - Not this time)
+
 Rest Assured Framework for API Testing (TODO)
