@@ -133,4 +133,11 @@ public class ItemGuavaCacheProcessor implements ItemCache {
         }
         return output;
     }
+    /**
+     * This method clears the cache and shutdown executor. It is mainly used in repeated test cases execution
+     **/
+    public boolean clearCacheAndShutdownMaintenanceExecutor () {
+        itemCache = null;
+        return Boolean.TRUE;
+    }
 }
